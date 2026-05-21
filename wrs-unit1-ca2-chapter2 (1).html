@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WRS Unit 1 CA2 Chapter 2 - Find Your Career Direction</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --forest:#1B5E3B;--forest-lt:#E8F0E4;--forest-mid:#4A8A62;
+  --sun:#F5A623;--sun-lt:#FFF3E0;
+  --coral:#E8836B;--coral-lt:#FDE8E4;
+  --sky:#4A90D9;--sky-lt:#E3F2FD;
+  --cream:#FBF7F0;--white:#fff;
+  --text:#2D2D2D;--text-mid:#5A6472;--text-light:#8A95A0;
+  --border:#E0E8DC;--border-mid:#C8D8C0;
+}
+html,body{height:100%;background:var(--cream);font-family:'DM Sans',sans-serif;color:var(--text)}
+.wrap{max-width:640px;margin:0 auto;padding:0 1.25rem 3rem}
+
+/* screens */
+.screen{display:none;animation:fadeUp .35s ease forwards}
+.screen.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* header band */
+.header-band{background:var(--forest);padding:.9rem 1.25rem;margin-bottom:0}
+.header-band-inner{max-width:640px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'Fraunces',serif;color:var(--white);font-size:15px;font-weight:600}
+.chapter-tag{background:rgba(255,255,255,.15);color:var(--white);font-size:12px;font-weight:500;padding:3px 10px;border-radius:20px}
+
+/* welcome */
+.welcome-hero{background:var(--forest);padding:2.5rem 1.25rem 3rem;margin-bottom:0}
+.welcome-hero-inner{max-width:640px;margin:0 auto}
+.hero-label{display:inline-block;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;margin-bottom:1rem;letter-spacing:.3px}
+.hero-h1{font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--white);line-height:1.25;margin-bottom:.75rem}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.8);line-height:1.6;margin-bottom:0}
+.wave{display:block;width:100%;height:40px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%);margin-top:-1px}
+
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1.5rem 0}
+.info-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:.9rem;display:flex;gap:.65rem;align-items:flex-start}
+.info-dot{width:28px;height:28px;border-radius:8px;background:var(--forest-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
+.info-text{font-size:13px;color:var(--text);line-height:1.4;font-weight:400}
+.info-text strong{font-weight:600;color:var(--forest);display:block;margin-bottom:2px;font-size:12px;text-transform:uppercase;letter-spacing:.3px}
+
+.btn-cta{width:100%;background:var(--forest);color:var(--white);border:none;border-radius:12px;padding:1rem;font-size:16px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .15s,transform .1s;margin-top:.5rem}
+.btn-cta:hover{background:#155230;transform:translateY(-1px)}
+.btn-cta:active{transform:translateY(0)}
+
+/* progress */
+.prog-wrap{margin:1.5rem 0 1.25rem;padding-top:.25rem}
+.prog-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem}
+.prog-label{font-size:13px;font-weight:600;color:var(--forest)}
+.prog-frac{font-size:12px;color:var(--text-light)}
+.prog-track{background:var(--forest-lt);border-radius:8px;height:6px;overflow:hidden}
+.prog-bar{background:var(--forest);height:6px;border-radius:8px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+
+/* question */
+.q-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.25rem;margin-bottom:1rem}
+.q-text{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:1.25rem}
+
+.option{display:flex;align-items:center;gap:12px;padding:.8rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;margin-bottom:.5rem;transition:border-color .15s,background .15s;background:var(--cream)}
+.option:hover{border-color:var(--forest-mid);background:var(--forest-lt)}
+.option.selected{border-color:var(--forest);background:var(--forest-lt)}
+.option-ring{width:22px;height:22px;border-radius:50%;border:2px solid var(--border-mid);flex-shrink:0;transition:all .15s;position:relative}
+.option.selected .option-ring{border-color:var(--forest);background:var(--forest)}
+.option.selected .option-ring::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:8px;height:8px;background:var(--white);border-radius:50%}
+.option-label{font-size:14px;color:var(--text);font-weight:400}
+.option.selected .option-label{font-weight:500;color:var(--forest)}
+
+.nav-row{display:flex;justify-content:space-between;gap:.75rem;margin-top:.25rem}
+.btn-back{background:var(--white);color:var(--forest);border:1.5px solid var(--border-mid);border-radius:10px;padding:.6rem 1.25rem;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:border-color .15s,background .15s}
+.btn-back:hover{border-color:var(--forest);background:var(--forest-lt)}
+.btn-back[style*="hidden"]{visibility:hidden}
+.btn-next{background:var(--forest);color:var(--white);border:none;border-radius:10px;padding:.6rem 1.5rem;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .15s,opacity .15s}
+.btn-next:hover:not(:disabled){background:#155230}
+.btn-next:disabled{opacity:.3;cursor:default}
+
+/* results */
+.results-header{background:var(--forest);padding:2rem 1.25rem 2.5rem}
+.results-header-inner{max-width:640px;margin:0 auto}
+.results-h{font-family:'Fraunces',serif;font-size:26px;color:var(--white);font-weight:700;margin-bottom:.4rem}
+.results-sub{font-size:14px;color:rgba(255,255,255,.8);line-height:1.5}
+
+.section-label{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--forest);margin:1.5rem 0 .75rem}
+
+.industry-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.25rem;margin-bottom:.9rem;position:relative;overflow:hidden}
+.industry-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--forest)}
+.ind-num{font-size:11px;font-weight:700;letter-spacing:.5px;color:var(--text-light);text-transform:uppercase;margin-bottom:.3rem}
+.ind-name{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--forest);margin-bottom:.35rem}
+.ind-why{font-size:13px;color:var(--text-mid);line-height:1.55;margin-bottom:.9rem}
+.ind-paths{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:.9rem}
+.path-tag{background:var(--forest-lt);color:var(--forest);font-size:12px;font-weight:500;padding:3px 10px;border-radius:20px}
+.reflect-box{background:var(--cream);border-left:3px solid var(--sun);padding:.7rem .85rem;border-radius:0 8px 8px 0}
+.reflect-label{font-size:11px;font-weight:700;color:var(--sun);text-transform:uppercase;letter-spacing:.4px;margin-bottom:.2rem}
+.reflect-text{font-size:13px;color:var(--text);font-style:italic;line-height:1.5}
+
+.copy-panel{background:var(--forest-lt);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.25rem;margin:1.25rem 0}
+.copy-title{font-size:12px;font-weight:700;color:var(--forest);text-transform:uppercase;letter-spacing:.4px;margin-bottom:.7rem}
+.copy-row{display:flex;align-items:baseline;gap:.6rem;padding:.3rem 0;border-bottom:1px dashed var(--border-mid)}
+.copy-row:last-child{border-bottom:none}
+.copy-n{font-size:13px;font-weight:700;color:var(--forest);min-width:18px}
+.copy-ind{font-size:14px;color:var(--text);font-weight:500}
+
+.next-steps{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.25rem;margin-bottom:1rem}
+.next-h{font-size:14px;font-weight:700;color:var(--text);margin-bottom:.5rem}
+.next-p{font-size:13px;color:var(--text-mid);line-height:1.55}
+.next-p strong{color:var(--forest)}
+
+.btn-row{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}
+.btn-outline{background:var(--white);color:var(--forest);border:1.5px solid var(--forest);border-radius:10px;padding:.6rem 1.25rem;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .15s}
+.btn-outline:hover{background:var(--forest-lt)}
+.btn-solid{background:var(--forest);color:var(--white);border:none;border-radius:10px;padding:.6rem 1.25rem;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .15s}
+.btn-solid:hover{background:#155230}
+
+@media print{
+  .header-band,.welcome-hero,.nav-row,.btn-row,.prog-wrap{display:none!important}
+  .screen{display:block!important}
+  #s-welcome,#s-quiz{display:none!important}
+  .industry-card{break-inside:avoid}
+}
+@media(max-width:480px){.info-grid{grid-template-columns:1fr}.hero-h1{font-size:26px}}
+</style>
+</head>
+<body>
+
+<div class="header-band">
+  <div class="header-band-inner">
+    <span class="brand">BlendED by Saints College</span>
+    <span class="chapter-tag">WRS Unit 1 CA2 Chapter 2</span>
+  </div>
+</div>
+
+<!-- WELCOME -->
+<div id="s-welcome" class="screen active">
+  <div class="welcome-hero">
+    <div class="welcome-hero-inner">
+      <span class="hero-label">Your future career</span>
+      <h1 class="hero-h1">Find your career direction</h1>
+      <p class="hero-sub">This quiz gives you three industry suggestions to use in Chapter 2 of your workbook. No wrong answers.</p>
+    </div>
+  </div>
+  <div class="wave"></div>
+  <div class="wrap">
+    <div class="info-grid">
+      <div class="info-item"><div class="info-dot">✓</div><div class="info-text"><strong>Not a test</strong>No right or wrong answers</div></div>
+      <div class="info-item"><div class="info-dot">⏱</div><div class="info-text"><strong>3 minutes</strong>12 short questions</div></div>
+      <div class="info-item"><div class="info-dot">📋</div><div class="info-text"><strong>For Q1</strong>You get 3 industry suggestions</div></div>
+      <div class="info-item"><div class="info-dot">💡</div><div class="info-text"><strong>For Q2 and Q3</strong>Reflection starters included</div></div>
+    </div>
+    <button class="btn-cta" onclick="startQuiz()">Start the quiz →</button>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div id="s-quiz" class="screen">
+  <div class="wrap">
+    <div class="prog-wrap">
+      <div class="prog-meta">
+        <span class="prog-label" id="q-label">Question 1 of 12</span>
+        <span class="prog-frac" id="q-frac">1 / 12</span>
+      </div>
+      <div class="prog-track"><div class="prog-bar" id="prog" style="width:8.33%"></div></div>
+    </div>
+    <div class="q-card">
+      <div class="q-text" id="q-text"></div>
+      <div id="q-options"></div>
+    </div>
+    <div class="nav-row">
+      <button class="btn-back" id="btn-back" onclick="prevQ()" style="visibility:hidden">← Back</button>
+      <button class="btn-next" id="btn-next" onclick="nextQ()" disabled>Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div id="s-results" class="screen">
+  <div class="results-header">
+    <div class="results-header-inner">
+      <p style="font-size:12px;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.4rem">Your results</p>
+      <h2 class="results-h">Your top 3 suggested industries</h2>
+      <p class="results-sub">Use these to answer Questions 1, 2 and 3 in Chapter 2 of your workbook.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="section-label">Suggested industries for your workbook</p>
+    <div id="results-list"></div>
+    <div class="copy-panel">
+      <div class="copy-title">Copy into your Q1 table</div>
+      <div id="copy-list"></div>
+    </div>
+    <div class="next-steps">
+      <div class="next-h">What to do next</div>
+      <p class="next-p"><strong>Question 1:</strong> Copy your three industries into the Suggested Industry column of the table, then write your reflection sentence for each using the starters above.</p>
+      <p class="next-p" style="margin-top:.5rem"><strong>Questions 2 and 3:</strong> Use the reflection starters from your top industry to help you write your paragraphs.</p>
+    </div>
+    <div class="btn-row">
+      <button class="btn-outline" onclick="restartQuiz()">Take quiz again</button>
+      <button class="btn-solid" onclick="window.print()">Print results</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const questions=[
+  {q:"I enjoy working with my hands - building, fixing or making things.",scores:{trades:3,tech:1,health:0,creative:1,business:0,community:0,education:0,science:0}},
+  {q:"I like helping people through difficult situations.",scores:{community:3,health:2,education:2,trades:0,tech:0,creative:0,business:0,science:0}},
+  {q:"I express myself through art, design, music or writing.",scores:{creative:3,education:1,community:1,trades:0,tech:0,health:0,business:0,science:0}},
+  {q:"I enjoy working with technology and figuring out how digital things work.",scores:{tech:3,science:2,business:1,trades:1,creative:1,health:0,community:0,education:0}},
+  {q:"I am good at organising, planning and keeping things running smoothly.",scores:{business:3,trades:1,tech:1,community:1,health:0,creative:0,education:0,science:0}},
+  {q:"I am curious about science, nature, health or how the body works.",scores:{science:3,health:3,trades:0,tech:1,creative:0,business:0,community:0,education:0}},
+  {q:"I enjoy working with young people or supporting others to learn.",scores:{education:3,community:2,health:1,creative:1,trades:0,tech:0,business:0,science:0}},
+  {q:"I prefer physical or active work over sitting at a desk.",scores:{trades:3,health:1,science:1,community:1,tech:0,creative:0,business:0,education:0}},
+  {q:"I like coming up with new ideas and being creative.",scores:{creative:3,tech:1,education:1,business:1,trades:0,health:0,community:0,science:0}},
+  {q:"I want a career where I can make a real difference in people's lives.",scores:{community:3,health:2,education:2,science:1,trades:0,tech:0,creative:0,business:0}},
+  {q:"I enjoy working with numbers, data or logical problems.",scores:{science:3,tech:2,business:2,trades:1,creative:0,health:0,community:0,education:0}},
+  {q:"I enjoy being part of a team and collaborating with others.",scores:{community:2,education:2,health:2,trades:1,business:1,tech:0,creative:0,science:0}}
+];
+
+const opts=[
+  {label:"Not really me",val:0},
+  {label:"A little bit me",val:1},
+  {label:"Quite like me",val:2},
+  {label:"Very much me",val:3}
+];
+
+const industries={
+  trades:{
+    name:"Trades and construction",
+    why:"You enjoy hands-on, practical work and like building or making things.",
+    paths:["VCE VM","VET - Building, Engineering, Automotive","Apprenticeships","TAFE - Trades and applied learning","VCE Units 1 & 2: Numeracy"],
+    q1reflect:"I think this industry could suit me because I enjoy working with my hands and practical problem-solving.",
+    q2:"I am drawn to trades because I like seeing the results of physical work. I'm still figuring out exactly which trade interests me most, but I know I learn best when I am doing something rather than sitting and listening.",
+    q3:"My strengths in hands-on problem-solving and my ability to stay focused on a physical task make me think I could do well in this industry. I also value being able to work independently while still being part of a team."
+  },
+  tech:{
+    name:"Information technology",
+    why:"You enjoy problem-solving with technology and working with digital tools and systems.",
+    paths:["VCE VM","VET - Information Technology","TAFE - IT, Networking, Cyber Security","VCE Units 1 & 2: Numeracy","Apprenticeships in IT support"],
+    q1reflect:"This industry interested me because I like figuring out how technology works and solving technical problems.",
+    q2:"Technology is something I find myself using and exploring a lot. I enjoy the logic of how digital systems work, even if I don't always know the right answers yet. I think this is an area I could see myself growing in.",
+    q3:"My curiosity about how things work and my ability to think through problems step by step are strengths that match what IT careers need. I am also comfortable learning new tools, which seems important in this fast-changing industry."
+  },
+  health:{
+    name:"Health and allied health",
+    why:"You are interested in how the body works and in caring for people's wellbeing.",
+    paths:["VCE VM","VCE Units 1 & 2: Biology, Psychology","TAFE - Nursing, Allied Health","University pathways via TAFE","VET - Health Services"],
+    q1reflect:"This industry felt relevant to me because I am curious about health and I care about people's wellbeing.",
+    q2:"I find myself interested in how the human body works and in careers where I can genuinely help people feel better. I am not sure yet whether I want to work in hands-on care or in a more research-based role, but health feels like the right direction.",
+    q3:"I think my empathy and my interest in science make me a reasonable fit for health. I care about people and I am patient, which are qualities I know matter in health careers. I would need to build more knowledge, but I am motivated to do that."
+  },
+  creative:{
+    name:"Creative industries",
+    why:"You express yourself through art, design, music or storytelling and enjoy making things.",
+    paths:["VCE VM","VCE Units 1 & 2: Art Creative Practice, Music","VET - Creative Industries, Screen and Media","TAFE - Design, Visual Arts, Music Production","Freelance or community arts"],
+    q1reflect:"This industry appealed to me because I enjoy expressing myself creatively and I am drawn to making things that have meaning.",
+    q2:"Creativity is something that feels natural to me. Whether it is through visual art, music or writing, I find that I communicate best when I am creating something. I am interested in careers where that skill is valued.",
+    q3:"My ability to think imaginatively and my commitment to craft are strengths that suit the creative industries. I also have the persistence to keep working on something until it feels right, which I think is important in creative work."
+  },
+  business:{
+    name:"Business and administration",
+    why:"You are organised, reliable and enjoy planning, managing and keeping things running well.",
+    paths:["VCE VM","VCE Units 1 & 2: Business Management, English","VET - Business, Retail","TAFE - Management, Administration","Work in events, logistics, office management"],
+    q1reflect:"This industry felt like a match because I enjoy organising things and I like knowing that a plan is in place.",
+    q2:"I like order and structure. I often find myself thinking about how things could be organised better, and I enjoy taking responsibility for getting things done. A business career feels like it would suit the way I naturally operate.",
+    q3:"My organisational skills and my reliability are two strengths I am confident in. I pay attention to detail and I follow through on what I say I will do. These feel like qualities that would be valued in a business or administration setting."
+  },
+  community:{
+    name:"Community and social services",
+    why:"You want to make a difference and enjoy listening to and supporting people.",
+    paths:["VCE VM","VCE Units 1 & 2: Psychology, English","TAFE - Community Services, Youth Work","VET - Community Services","Disability, aged care, case management roles"],
+    q1reflect:"This industry resonated with me because I care about the people around me and I want my work to matter.",
+    q2:"I think about people a lot - what they are going through and what they need. Community work feels meaningful in a way that other career areas don't. I want a job where I can actually see the difference I am making.",
+    q3:"Empathy and listening are two things I am told I am good at. I also stay calm under pressure and I genuinely care about the people I work with. These are the kinds of values and skills I think are needed in community services."
+  },
+  education:{
+    name:"Education and early childhood",
+    why:"You enjoy helping others learn and working with children or young people.",
+    paths:["VCE VM","VCE Units 1 & 2: Psychology, English","TAFE - Early Childhood, Education Support","VET - Children's Services","Teacher aide, tutoring, childcare roles"],
+    q1reflect:"This industry appealed to me because I enjoy working with young people and I find it rewarding when someone understands something new.",
+    q2:"I have always liked explaining things to people and seeing that moment when something clicks for them. Working in education or childcare feels like a way to do that every day, which I find genuinely motivating.",
+    q3:"My patience and my ability to communicate clearly are strengths I value. I am also curious about how people learn differently, which I think is useful in education. I believe I could grow into a role that involves supporting others to develop."
+  },
+  science:{
+    name:"Science and environment",
+    why:"You are curious about the natural world, data and how things work at a deeper level.",
+    paths:["VCE VM","VCE Units 1 & 2: Biology, Chemistry, Environmental Science","TAFE - Laboratory Technology, Environmental","University pathways","Research, data analysis, environmental roles"],
+    q1reflect:"This industry interested me because I like understanding why things happen and I enjoy learning about the natural world.",
+    q2:"I ask a lot of questions and I like finding out the reasons behind things. Science appeals to me because it is about curiosity and figuring things out systematically. I am not sure which area of science yet, but I know I am drawn to it.",
+    q3:"My analytical thinking and my curiosity are my strongest qualities when it comes to this industry. I also pay attention to detail and I enjoy research, which I think are important in scientific careers. I would need more study, but the motivation is there."
+  }
+};
+
+let cur=0, answers=new Array(12).fill(null);
+
+function startQuiz(){cur=0;answers=new Array(12).fill(null);show('s-quiz');renderQ();}
+function restartQuiz(){cur=0;answers=new Array(12).fill(null);show('s-quiz');renderQ();}
+
+function renderQ(){
+  const q=questions[cur];
+  const pct=((cur+1)/12*100).toFixed(1);
+  document.getElementById('q-label').textContent='Question '+(cur+1)+' of 12';
+  document.getElementById('q-frac').textContent=(cur+1)+' / 12';
+  document.getElementById('prog').style.width=pct+'%';
+  document.getElementById('q-text').textContent=q.q;
+  document.getElementById('btn-back').style.visibility=cur===0?'hidden':'visible';
+  const nb=document.getElementById('btn-next');
+  nb.textContent=cur===11?'See my results →':'Next →';
+  nb.disabled=answers[cur]===null;
+  const oc=document.getElementById('q-options');
+  oc.innerHTML='';
+  opts.forEach(o=>{
+    const d=document.createElement('div');
+    d.className='option'+(answers[cur]===o.val?' selected':'');
+    d.innerHTML='<div class="option-ring"></div><span class="option-label">'+o.label+'</span>';
+    d.onclick=()=>{answers[cur]=o.val;renderQ();};
+    oc.appendChild(d);
+  });
+}
+
+function nextQ(){
+  if(answers[cur]===null)return;
+  if(cur<11){cur++;renderQ();}else showResults();
+}
+function prevQ(){if(cur>0){cur--;renderQ();}}
+
+function showResults(){
+  const scores={};
+  Object.keys(industries).forEach(k=>scores[k]=0);
+  questions.forEach((q,i)=>{
+    if(answers[i]===null)return;
+    Object.entries(q.scores).forEach(([k,v])=>scores[k]+=v*answers[i]);
+  });
+  const top3=Object.entries(scores).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([k])=>k);
+  const rl=document.getElementById('results-list');
+  const cl=document.getElementById('copy-list');
+  rl.innerHTML=''; cl.innerHTML='';
+  top3.forEach((id,i)=>{
+    const ind=industries[id];
+    rl.innerHTML+=
+      '<div class="industry-card">'+
+        '<div class="ind-num">Suggested industry '+(i+1)+'</div>'+
+        '<div class="ind-name">'+ind.name+'</div>'+
+        '<div class="ind-why">'+ind.why+'</div>'+
+        '<div class="ind-paths">'+ind.paths.map(p=>'<span class="path-tag">'+p+'</span>').join('')+'</div>'+
+        '<div class="reflect-box">'+
+          '<div class="reflect-label">Reflection starter for Q1</div>'+
+          '<div class="reflect-text">'+ind.q1reflect+'</div>'+
+        '</div>'+
+      '</div>';
+    cl.innerHTML+='<div class="copy-row"><span class="copy-n">'+(i+1)+'.</span><span class="copy-ind">'+ind.name+'</span></div>';
+  });
+  show('s-results');
+}
+
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
