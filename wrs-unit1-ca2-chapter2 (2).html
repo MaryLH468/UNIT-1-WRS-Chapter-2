@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WRS Unit 1 CA2 Chapter 2 - Find Your Career Direction</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --forest:#1B5E3B;--forest-lt:#E8F0E4;--forest-mid:#4A8A62;
+  --sun:#F5A623;--sun-lt:#FFF3E0;
+  --coral:#E8836B;--coral-lt:#FDE8E4;
+  --sky:#4A90D9;--sky-lt:#E3F2FD;
+  --cream:#FBF7F0;--white:#fff;
+  --text:#2D2D2D;--text-mid:#5A6472;--text-light:#8A95A0;
+  --border:#E0E8DC;--border-mid:#C8D8C0;
+}
+html,body{background:var(--cream);font-family:'DM Sans',sans-serif;color:var(--text)}
+.wrap{max-width:640px;margin:0 auto;padding:0 1.25rem 3rem}
+.screen{display:none;animation:fadeUp .35s ease forwards}
+.screen.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.header-band{background:var(--forest);padding:.9rem 1.25rem}
+.header-band-inner{max-width:640px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'Fraunces',serif;color:var(--white);font-size:15px;font-weight:600}
+.chapter-tag{background:rgba(255,255,255,.15);color:var(--white);font-size:12px;font-weight:500;padding:3px 10px;border-radius:20px}
+.welcome-hero{background:var(--forest);padding:2.5rem 1.25rem 3rem}
+.welcome-hero-inner{max-width:640px;margin:0 auto}
+.hero-label{display:inline-block;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;margin-bottom:1rem;letter-spacing:.3px}
+.hero-h1{font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--white);line-height:1.25;margin-bottom:.75rem}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.8);line-height:1.6}
+.wave{display:block;width:100%;height:40px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%);margin-top:-1px}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1.5rem 0}
+.info-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:.9rem;display:flex;gap:.65rem;align-items:flex-start}
+.info-dot{width:28px;height:28px;border-radius:8px;background:var(--forest-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
+.info-text{font-size:13px;color:var(--text);line-height:1.4}
+.info-text strong{font-weight:600;color:var(--forest);display:block;margin-bottom:2px;font-size:12px;text-transform:uppercase;letter-spacing:.3px}
+.btn-cta{width:100%;background:var(--forest);color:var(--white);border:none;border-radius:12px;padding:1rem;font-size:16px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .15s,transform .1s;margin-top:.5rem}
+.btn-cta:hover{background:#155230;transform:translateY(-1px)}
+.prog-wrap{margin:1.5rem 0 1.25rem;padding-top:.25rem}
+.prog-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem}
+.prog-label{font-size:13px;font-weight:600;color:var(--forest)}
+.prog-frac{font-size:12px;color:var(--text-light)}
+.prog-track{background:var(--forest-lt);border-radius:8px;height:6px;overflow:hidden}
+.prog-bar{background:var(--forest);height:6px;border-radius:8px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.q-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.25rem;margin-bottom:1rem}
+.q-text{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:1.25rem}
+.option{display:flex;align-items:center;gap:12px;padding:.8rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;margin-bottom:.5rem;transition:border-color .15s,background .15s;background:var(--cream)}
+.option:hover{border-color:var(--forest-mid);background:var(--forest-lt)}
+.option.selected{border-color:var(--forest);background:var(--forest-lt)}
+.option-ring{width:22px;height:22px;border-radius:50%;border:2px solid var(--border-mid);flex-shrink:0;transition:all .15s;position:relative}
+.option.selected .option-ring{border-color:var(--forest);background:var(--forest)}
+.option.selected .option-ring::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:8px;height:8px;background:var(--white);border-radius:50%}
+.option-label{font-size:14px;color:var(--text)}
+.option.selected .option-label{font-weight:500;color:var(--forest)}
+.nav-row{display:flex;justify-content:space-between;gap:.75rem;margin-top:.25rem}
+.btn-back{background:var(--white);color:var(--forest);border:1.5px solid var(--border-mid);border-radius:10px;padding:.6rem 1.25rem;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:border-color .15s,background .15s}
+.btn-back:hover{border-color:var(--forest);background:var(--forest-lt)}
+.btn-next{background:var(--forest);color:var(--white);border:none;border-radius:10px;padding:.6rem 1.5rem;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .15s,opacity .15s}
+.btn-next:hover:not(:disabled){background:#155230}
+.btn-next:disabled{opacity:.3;cursor:default}
+.results-header{background:var(--forest);padding:2rem 1.25rem 2.5rem}
+.results-header-inner{max-width:640px;margin:0 auto}
+.results-h{font-family:'Fraunces',serif;font-size:26px;color:var(--white);font-weight:700;margin-bottom:.4rem}
+.results-sub{font-size:14px;color:rgba(255,255,255,.8);line-height:1.5}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--forest);margin:1.5rem 0 .75rem}
+.industry-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.25rem;margin-bottom:.9rem;position:relative;overflow:hidden}
+.industry-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--forest)}
+.ind-num{font-size:11px;font-weight:700;letter-spacing:.5px;color:var(--text-light);text-transform:uppercase;margin-bottom:.3rem}
+.ind-name{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--forest);margin-bottom:.35rem}
+.ind-why{font-size:13px;color:var(--text-mid);line-height:1.55;margin-bottom:.9rem}
+.ind-paths{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:.9rem}
+.path-tag{background:var(--forest-lt);color:var(--forest);font-size:12px;font-weight:500;padding:3px 10px;border-radius:20px}
+.reflect-box{background:var(--cream);border-left:3px solid var(--sun);padding:.7rem .85rem;border-radius:0 8px 8px 0}
+.reflect-label{font-size:11px;font-weight:700;color:var(--sun);text-transform:uppercase;letter-spacing:.4px;margin-bottom:.2rem}
+.reflect-text{font-size:13px;color:var(--text);font-style:italic;line-height:1.5}
+.copy-panel{background:var(--forest-lt);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.25rem;margin:1.25rem 0}
+.copy-title{font-size:12px;font-weight:700;color:var(--forest);text-transform:uppercase;letter-spacing:.4px;margin-bottom:.7rem}
+.copy-row{display:flex;align-items:baseline;gap:.6rem;padding:.3rem 0;border-bottom:1px dashed var(--border-mid)}
+.copy-row:last-child{border-bottom:none}
+.copy-n{font-size:13px;font-weight:700;color:var(--forest);min-width:18px}
+.copy-ind{font-size:14px;color:var(--text);font-weight:500}
+.next-steps{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.25rem;margin-bottom:1rem}
+.next-h{font-size:14px;font-weight:700;color:var(--text);margin-bottom:.5rem}
+.next-p{font-size:13px;color:var(--text-mid);line-height:1.55}
+.next-p strong{color:var(--forest)}
+.btn-row{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}
+.btn-outline{background:var(--white);color:var(--forest);border:1.5px solid var(--forest);border-radius:10px;padding:.6rem 1.25rem;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .15s}
+.btn-outline:hover{background:var(--forest-lt)}
+.btn-solid{background:var(--forest);color:var(--white);border:none;border-radius:10px;padding:.6rem 1.25rem;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .15s}
+.btn-solid:hover{background:#155230}
+
+/* scaffold screens */
+.scaffold-header{background:var(--sky);padding:2rem 1.25rem 2.5rem}
+.scaffold-header.q3{background:var(--coral)}
+.scaffold-header-inner{max-width:640px;margin:0 auto}
+.scaffold-step-label{font-size:12px;font-weight:600;color:rgba(255,255,255,.8);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.4rem}
+.scaffold-h{font-family:'Fraunces',serif;font-size:24px;color:var(--white);font-weight:700;margin-bottom:.4rem;line-height:1.3}
+.scaffold-sub{font-size:14px;color:rgba(255,255,255,.85);line-height:1.5}
+.step-counter{display:flex;gap:6px;margin-bottom:1.5rem;padding-top:.25rem}
+.step-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:background .2s}
+.step-dot.done{background:var(--forest)}
+.step-dot.active{background:var(--sky)}
+.scaffold-q-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.25rem;margin-bottom:1rem}
+.scaffold-q-label{font-size:11px;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.5rem}
+.scaffold-q-text{font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:1rem}
+.scaffold-hint{font-size:13px;color:var(--text-mid);font-style:italic;margin-bottom:1rem;line-height:1.5;padding:.6rem .85rem;background:var(--cream);border-radius:8px}
+.scaffold-input{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:.75rem 1rem;font-size:15px;font-family:'DM Sans',sans-serif;color:var(--text);background:var(--cream);resize:none;transition:border-color .15s;outline:none;line-height:1.5}
+.scaffold-input:focus{border-color:var(--forest);background:var(--white)}
+.scaffold-input::placeholder{color:var(--text-light)}
+.para-preview{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.25rem;margin-bottom:1rem}
+.para-preview-label{font-size:11px;font-weight:700;color:var(--forest);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.75rem}
+.para-text{font-size:15px;color:var(--text);line-height:1.8;font-style:italic}
+.copy-btn{display:flex;align-items:center;gap:.5rem;background:var(--forest-lt);border:1px solid var(--border-mid);border-radius:10px;padding:.6rem 1rem;font-size:13px;font-weight:600;color:var(--forest);cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .15s;margin-top:.75rem}
+.copy-btn:hover{background:var(--border)}
+.copy-success{color:var(--forest);font-size:13px;font-weight:600;margin-top:.5rem;display:none}
+.workbook-reminder{background:var(--sun-lt);border:1px solid #f0d090;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1rem}
+.workbook-reminder-label{font-size:11px;font-weight:700;color:#a07010;text-transform:uppercase;letter-spacing:.4px;margin-bottom:.3rem}
+.workbook-reminder-text{font-size:13px;color:var(--text);line-height:1.5}
+.done-header{background:var(--forest);padding:2rem 1.25rem 2.5rem}
+.done-header-inner{max-width:640px;margin:0 auto}
+
+@media print{.header-band,.welcome-hero,.nav-row,.btn-row,.prog-wrap{display:none!important}.screen{display:block!important}#s-welcome,#s-quiz,#s-q2,#s-q3{display:none!important}.industry-card{break-inside:avoid}}
+@media(max-width:480px){.info-grid{grid-template-columns:1fr}.hero-h1{font-size:26px}}
+</style>
+</head>
+<body>
+
+<div class="header-band">
+  <div class="header-band-inner">
+    <span class="brand">BlendED by Saints College</span>
+    <span class="chapter-tag">WRS Unit 1 CA2 Chapter 2</span>
+  </div>
+</div>
+
+<!-- WELCOME -->
+<div id="s-welcome" class="screen active">
+  <div class="welcome-hero">
+    <div class="welcome-hero-inner">
+      <span class="hero-label">Your future career</span>
+      <h1 class="hero-h1">Find your career direction</h1>
+      <p class="hero-sub">This tool helps you answer all three questions in Chapter 2 of your workbook. No wrong answers.</p>
+    </div>
+  </div>
+  <div class="wave"></div>
+  <div class="wrap">
+    <div class="info-grid">
+      <div class="info-item"><div class="info-dot">1</div><div class="info-text"><strong>Step 1 - Quiz</strong>Get 3 industry suggestions for Q1</div></div>
+      <div class="info-item"><div class="info-dot">2</div><div class="info-text"><strong>Step 2 - Q2</strong>Build your career reflection paragraph</div></div>
+      <div class="info-item"><div class="info-dot">3</div><div class="info-text"><strong>Step 3 - Q3</strong>Build your suitability paragraph</div></div>
+      <div class="info-item"><div class="info-dot">✓</div><div class="info-text"><strong>Copy and paste</strong>Each paragraph is ready to go into your workbook</div></div>
+    </div>
+    <button class="btn-cta" onclick="startQuiz()">Start with the quiz →</button>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div id="s-quiz" class="screen">
+  <div class="wrap">
+    <div class="prog-wrap">
+      <div class="prog-meta">
+        <span class="prog-label" id="q-label">Question 1 of 12</span>
+        <span class="prog-frac" id="q-frac">1 / 12</span>
+      </div>
+      <div class="prog-track"><div class="prog-bar" id="prog" style="width:8.33%"></div></div>
+    </div>
+    <div class="q-card">
+      <div class="q-text" id="q-text"></div>
+      <div id="q-options"></div>
+    </div>
+    <div class="nav-row">
+      <button class="btn-back" id="btn-back" onclick="prevQ()" style="visibility:hidden">← Back</button>
+      <button class="btn-next" id="btn-next" onclick="nextQ()" disabled>Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div id="s-results" class="screen">
+  <div class="results-header">
+    <div class="results-header-inner">
+      <p style="font-size:12px;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.4rem">Step 1 complete</p>
+      <h2 class="results-h">Your top 3 suggested industries</h2>
+      <p class="results-sub">Copy these into Question 1 in your workbook, then move on to build your Q2 paragraph.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="section-label">For your Q1 table</p>
+    <div id="results-list"></div>
+    <div class="copy-panel">
+      <div class="copy-title">Copy into your Q1 table</div>
+      <div id="copy-list"></div>
+    </div>
+    <div class="next-steps">
+      <div class="next-h">What to do now</div>
+      <p class="next-p">Copy your three industries into your workbook Q1 table. Use the reflection starters above to write your sentence for each one. Then come back here and click the button below to build your Q2 paragraph.</p>
+    </div>
+    <button class="btn-cta" onclick="show('s-q2');renderScaffold('q2')">Next - build my Q2 paragraph →</button>
+  </div>
+</div>
+
+<!-- Q2 SCAFFOLD -->
+<div id="s-q2" class="screen">
+  <div class="scaffold-header">
+    <div class="scaffold-header-inner">
+      <div class="scaffold-step-label">Step 2 of 3</div>
+      <h2 class="scaffold-h">Question 2 - Your career path</h2>
+      <p class="scaffold-sub">Answer a few small questions and we will build your paragraph for you to copy into your workbook.</p>
+    </div>
+  </div>
+  <div class="wave" style="background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%);height:40px;display:block;width:100%;margin-top:-1px;background-color:var(--cream);"></div>
+  <div class="wrap">
+    <div class="workbook-reminder">
+      <div class="workbook-reminder-label">Workbook question 2 says</div>
+      <div class="workbook-reminder-text">Each of us is at a different stage in terms of thinking about a future career. Write a paragraph reflecting on your current thoughts around your career path. It does not matter if you do not know yet - in this case, reflect on your interests.</div>
+    </div>
+    <div id="q2-step-area"></div>
+  </div>
+</div>
+
+<!-- Q3 SCAFFOLD -->
+<div id="s-q3" class="screen">
+  <div class="scaffold-header q3">
+    <div class="scaffold-header-inner">
+      <div class="scaffold-step-label">Step 3 of 3</div>
+      <h2 class="scaffold-h">Question 3 - Your suitability</h2>
+      <p class="scaffold-sub">Answer a few small questions and we will build your paragraph for you to copy into your workbook.</p>
+    </div>
+  </div>
+  <div class="wave" style="background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%);height:40px;display:block;width:100%;margin-top:-1px;background-color:var(--cream);"></div>
+  <div class="wrap">
+    <div class="workbook-reminder">
+      <div class="workbook-reminder-label">Workbook question 3 says</div>
+      <div class="workbook-reminder-text">Thinking about your current skills, character strengths, values and interests, write a paragraph reflecting on your suitability for an industry of interest. If you do not have one, reflect on which industries you might be best suited to and why.</div>
+    </div>
+    <div id="q3-step-area"></div>
+  </div>
+</div>
+
+<!-- ALL DONE -->
+<div id="s-done" class="screen">
+  <div class="done-header">
+    <div class="done-header-inner">
+      <p style="font-size:12px;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.4rem">All done</p>
+      <h2 class="results-h">Chapter 2 complete</h2>
+      <p class="results-sub">You have answered all three questions. Make sure everything is copied into your workbook before you close this page.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div id="done-summary"></div>
+    <div class="btn-row" style="margin-top:1.5rem">
+      <button class="btn-outline" onclick="window.print()">Print all answers</button>
+      <button class="btn-outline" onclick="restartQuiz()">Start again</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const questions=[
+  {q:"I enjoy working with my hands - building, fixing or making things.",scores:{trades:3,tech:1,health:0,creative:1,business:0,community:0,education:0,science:0}},
+  {q:"I like helping people through difficult situations.",scores:{community:3,health:2,education:2,trades:0,tech:0,creative:0,business:0,science:0}},
+  {q:"I express myself through art, design, music or writing.",scores:{creative:3,education:1,community:1,trades:0,tech:0,health:0,business:0,science:0}},
+  {q:"I enjoy working with technology and figuring out how digital things work.",scores:{tech:3,science:2,business:1,trades:1,creative:1,health:0,community:0,education:0}},
+  {q:"I am good at organising, planning and keeping things running smoothly.",scores:{business:3,trades:1,tech:1,community:1,health:0,creative:0,education:0,science:0}},
+  {q:"I am curious about science, nature, health or how the body works.",scores:{science:3,health:3,trades:0,tech:1,creative:0,business:0,community:0,education:0}},
+  {q:"I enjoy working with young people or supporting others to learn.",scores:{education:3,community:2,health:1,creative:1,trades:0,tech:0,business:0,science:0}},
+  {q:"I prefer physical or active work over sitting at a desk.",scores:{trades:3,health:1,science:1,community:1,tech:0,creative:0,business:0,education:0}},
+  {q:"I like coming up with new ideas and being creative.",scores:{creative:3,tech:1,education:1,business:1,trades:0,health:0,community:0,science:0}},
+  {q:"I want a career where I can make a real difference in people's lives.",scores:{community:3,health:2,education:2,science:1,trades:0,tech:0,creative:0,business:0}},
+  {q:"I enjoy working with numbers, data or logical problems.",scores:{science:3,tech:2,business:2,trades:1,creative:0,health:0,community:0,education:0}},
+  {q:"I enjoy being part of a team and collaborating with others.",scores:{community:2,education:2,health:2,trades:1,business:1,tech:0,creative:0,science:0}}
+];
+
+const opts=[
+  {label:"Not really me",val:0},
+  {label:"A little bit me",val:1},
+  {label:"Quite like me",val:2},
+  {label:"Very much me",val:3}
+];
+
+const industries={
+  trades:{name:"Trades and construction",why:"You enjoy hands-on, practical work and like building or making things.",paths:["VCE VM","VET - Building, Engineering, Automotive","Apprenticeships","TAFE - Trades and applied learning","VCE Units 1 & 2: Numeracy"],q1reflect:"This industry could suit me because I enjoy working with my hands and practical problem-solving."},
+  tech:{name:"Information technology",why:"You enjoy problem-solving with technology and working with digital tools and systems.",paths:["VCE VM","VET - Information Technology","TAFE - IT, Networking, Cyber Security","VCE Units 1 & 2: Numeracy","Apprenticeships in IT support"],q1reflect:"This industry interested me because I like figuring out how technology works and solving technical problems."},
+  health:{name:"Health and allied health",why:"You are interested in how the body works and in caring for people's wellbeing.",paths:["VCE VM","VCE Units 1 & 2: Biology, Psychology","TAFE - Nursing, Allied Health","University pathways via TAFE","VET - Health Services"],q1reflect:"This industry felt relevant because I am curious about health and I care about people's wellbeing."},
+  creative:{name:"Creative industries",why:"You express yourself through art, design, music or storytelling and enjoy making things.",paths:["VCE VM","VCE Units 1 & 2: Art Creative Practice, Music","VET - Creative Industries, Screen and Media","TAFE - Design, Visual Arts, Music Production","Freelance or community arts"],q1reflect:"This industry appealed to me because I enjoy expressing myself creatively and making things that have meaning."},
+  business:{name:"Business and administration",why:"You are organised, reliable and enjoy planning, managing and keeping things running well.",paths:["VCE VM","VCE Units 1 & 2: Business Management, English","VET - Business, Retail","TAFE - Management, Administration","Work in events, logistics, office management"],q1reflect:"This industry felt like a match because I enjoy organising things and I like having a plan."},
+  community:{name:"Community and social services",why:"You want to make a difference and enjoy listening to and supporting people.",paths:["VCE VM","VCE Units 1 & 2: Psychology, English","TAFE - Community Services, Youth Work","VET - Community Services","Disability, aged care, case management roles"],q1reflect:"This industry resonated with me because I care about people and I want my work to make a difference."},
+  education:{name:"Education and early childhood",why:"You enjoy helping others learn and working with children or young people.",paths:["VCE VM","VCE Units 1 & 2: Psychology, English","TAFE - Early Childhood, Education Support","VET - Children's Services","Teacher aide, tutoring, childcare roles"],q1reflect:"This industry appealed to me because I enjoy working with young people and helping others learn."},
+  science:{name:"Science and environment",why:"You are curious about the natural world, data and how things work at a deeper level.",paths:["VCE VM","VCE Units 1 & 2: Biology, Chemistry, Environmental Science","TAFE - Laboratory Technology, Environmental","University pathways","Research, data analysis, environmental roles"],q1reflect:"This industry interested me because I like understanding why things happen and learning about the natural world."}
+};
+
+// Q2 scaffold questions
+const q2steps=[
+  {
+    label:"Question 2 - part 1 of 3",
+    q:"Do you have an idea of what kind of work or career you might want? It is completely fine if you do not know yet.",
+    hint:"There is no wrong answer here. You might have a clear idea, a vague interest, or no idea at all - all of those are valid.",
+    placeholder:"For example: I have a general idea, or I am not sure yet but I am interested in...",
+    id:"q2a"
+  },
+  {
+    label:"Question 2 - part 2 of 3",
+    q:"What subjects, activities or topics do you find yourself most drawn to or enjoying - at school or outside of school?",
+    hint:"Think about what you do in your free time, what you find easy, or what makes time go quickly.",
+    placeholder:"For example: I enjoy working with technology, or I like being outdoors, or I find myself drawn to art and music...",
+    id:"q2b"
+  },
+  {
+    label:"Question 2 - part 3 of 3",
+    q:"Is there anything about your future career that feels important to you right now - even if you are not sure of the details?",
+    hint:"This could be about the kind of environment you want to work in, the kind of people you want to help, or simply wanting to enjoy what you do.",
+    placeholder:"For example: I want a job where I am not stuck at a desk, or I want to help people, or I just want to enjoy going to work...",
+    id:"q2c"
+  }
+];
+
+// Q3 scaffold questions
+const q3steps=[
+  {
+    label:"Question 3 - part 1 of 4",
+    q:"What is one thing you are genuinely good at - a skill or ability you feel confident in?",
+    hint:"Think about what other people come to you for, or something you do that feels natural and easy for you.",
+    placeholder:"For example: I am good at problem-solving, or I am good at listening to people, or I am good at making things...",
+    id:"q3a"
+  },
+  {
+    label:"Question 3 - part 2 of 4",
+    q:"What is one strength about your character - something about the kind of person you are?",
+    hint:"Character strengths are things like being patient, reliable, creative, empathetic, curious or determined.",
+    placeholder:"For example: I am patient and I stay calm under pressure, or I am curious and I ask a lot of questions...",
+    id:"q3b"
+  },
+  {
+    label:"Question 3 - part 3 of 4",
+    q:"What do you value - what matters to you most about the kind of work you do?",
+    hint:"Values are things like helping others, being creative, working independently, making a difference, being outdoors, or being part of a team.",
+    placeholder:"For example: I value being able to help people, or I care about doing work that is creative, or I value having variety in my day...",
+    id:"q3c"
+  },
+  {
+    label:"Question 3 - part 4 of 4",
+    q:"Based on your strengths, character and values - which industry from your quiz results feels like the best fit for you and why?",
+    hint:"Use your top industry from Step 1, or choose whichever one felt most like you. Explain the connection in your own words.",
+    placeholder:"For example: I think the health industry suits me because I care about people and I am patient...",
+    id:"q3d"
+  }
+];
+
+let cur=0, answers=new Array(12).fill(null);
+let q2answers={q2a:'',q2b:'',q2c:''};
+let q3answers={q3a:'',q3b:'',q3c:'',q3d:''};
+let q2cur=0, q3cur=0;
+
+function startQuiz(){cur=0;answers=new Array(12).fill(null);show('s-quiz');renderQ();}
+function restartQuiz(){cur=0;answers=new Array(12).fill(null);q2answers={q2a:'',q2b:'',q2c:''};q3answers={q3a:'',q3b:'',q3c:'',q3d:''};q2cur=0;q3cur=0;show('s-welcome');}
+
+function renderQ(){
+  const q=questions[cur];
+  const pct=((cur+1)/12*100).toFixed(1);
+  document.getElementById('q-label').textContent='Question '+(cur+1)+' of 12';
+  document.getElementById('q-frac').textContent=(cur+1)+' / 12';
+  document.getElementById('prog').style.width=pct+'%';
+  document.getElementById('q-text').textContent=q.q;
+  document.getElementById('btn-back').style.visibility=cur===0?'hidden':'visible';
+  const nb=document.getElementById('btn-next');
+  nb.textContent=cur===11?'See my results →':'Next →';
+  nb.disabled=answers[cur]===null;
+  const oc=document.getElementById('q-options');
+  oc.innerHTML='';
+  opts.forEach(o=>{
+    const d=document.createElement('div');
+    d.className='option'+(answers[cur]===o.val?' selected':'');
+    d.innerHTML='<div class="option-ring"></div><span class="option-label">'+o.label+'</span>';
+    d.onclick=()=>{answers[cur]=o.val;renderQ();};
+    oc.appendChild(d);
+  });
+}
+
+function nextQ(){if(answers[cur]===null)return;if(cur<11){cur++;renderQ();}else showResults();}
+function prevQ(){if(cur>0){cur--;renderQ();}}
+
+function showResults(){
+  const scores={};
+  Object.keys(industries).forEach(k=>scores[k]=0);
+  questions.forEach((q,i)=>{
+    if(answers[i]===null)return;
+    Object.entries(q.scores).forEach(([k,v])=>scores[k]+=v*answers[i]);
+  });
+  const top3=Object.entries(scores).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([k])=>k);
+  const rl=document.getElementById('results-list');
+  const cl=document.getElementById('copy-list');
+  rl.innerHTML=''; cl.innerHTML='';
+  top3.forEach((id,i)=>{
+    const ind=industries[id];
+    rl.innerHTML+='<div class="industry-card"><div class="ind-num">Suggested industry '+(i+1)+'</div><div class="ind-name">'+ind.name+'</div><div class="ind-why">'+ind.why+'</div><div class="ind-paths">'+ind.paths.map(p=>'<span class="path-tag">'+p+'</span>').join('')+'</div><div class="reflect-box"><div class="reflect-label">Reflection starter for Q1</div><div class="reflect-text">'+ind.q1reflect+'</div></div></div>';
+    cl.innerHTML+='<div class="copy-row"><span class="copy-n">'+(i+1)+'.</span><span class="copy-ind">'+ind.name+'</span></div>';
+  });
+  show('s-results');
+}
+
+// SCAFFOLD
+function renderScaffold(which){
+  const steps = which==='q2' ? q2steps : q3steps;
+  const stepCur = which==='q2' ? q2cur : q3cur;
+  const area = document.getElementById(which+'-step-area');
+  const ans = which==='q2' ? q2answers : q3answers;
+  const step = steps[stepCur];
+  const total = steps.length;
+
+  // dots
+  let dots='<div class="step-counter">';
+  for(let i=0;i<total;i++) dots+='<div class="step-dot'+(i<stepCur?' done':i===stepCur?' active':'')+'"></div>';
+  dots+='</div>';
+
+  const isLast = stepCur===total-1;
+
+  area.innerHTML=dots+
+    '<div class="scaffold-q-card">'+
+      '<div class="scaffold-q-label">'+step.label+'</div>'+
+      '<div class="scaffold-q-text">'+step.q+'</div>'+
+      '<div class="scaffold-hint">'+step.hint+'</div>'+
+      '<textarea class="scaffold-input" id="scaffold-input-'+step.id+'" rows="3" placeholder="'+step.placeholder+'">'+
+        (ans[step.id]||'')+
+      '</textarea>'+
+    '</div>'+
+    '<div class="nav-row">'+
+      '<button class="btn-back" '+(stepCur===0?'style="visibility:hidden"':'')+' onclick="scaffoldBack(\''+which+'\')">← Back</button>'+
+      '<button class="btn-next" id="scaffold-next-'+which+'" onclick="scaffoldNext(\''+which+'\')" '+(ans[step.id]?'':'disabled')+'>'+
+        (isLast?'Build my paragraph →':'Next →')+
+      '</button>'+
+    '</div>';
+
+  // enable next when input has content
+  const inp=document.getElementById('scaffold-input-'+step.id);
+  inp.addEventListener('input',function(){
+    document.getElementById('scaffold-next-'+which).disabled=this.value.trim().length===0;
+  });
+}
+
+function scaffoldNext(which){
+  const steps = which==='q2' ? q2steps : q3steps;
+  const stepCur = which==='q2' ? q2cur : q3cur;
+  const step = steps[stepCur];
+  const val = document.getElementById('scaffold-input-'+step.id).value.trim();
+  if(!val) return;
+  if(which==='q2') q2answers[step.id]=val; else q3answers[step.id]=val;
+  if(stepCur < steps.length-1){
+    if(which==='q2') q2cur++; else q3cur++;
+    renderScaffold(which);
+  } else {
+    showParagraph(which);
+  }
+}
+
+function scaffoldBack(which){
+  const stepCur = which==='q2' ? q2cur : q3cur;
+  if(stepCur>0){
+    if(which==='q2') q2cur--; else q3cur--;
+    renderScaffold(which);
+  }
+}
+
+function showParagraph(which){
+  const area = document.getElementById(which+'-step-area');
+  let para='';
+
+  if(which==='q2'){
+    const a=q2answers;
+    const known = a.q2a && a.q2a.toLowerCase().indexOf('not sure')===-1 && a.q2a.toLowerCase().indexOf('no idea')===-1 && a.q2a.trim().length>3;
+    para = (known
+      ? a.q2a+'. '
+      : 'I am still figuring out what career path I want to follow, and that is okay. ')
+      +'When I think about what I enjoy, '+a.q2b.charAt(0).toLowerCase()+a.q2b.slice(1)+'. '
+      +'Looking ahead, '+a.q2c.charAt(0).toLowerCase()+a.q2c.slice(1)+'. '
+      +'I think exploring different options and building on my strengths will help me find the right direction.';
+  } else {
+    const a=q3answers;
+    para = 'One of my key skills is that '+a.q3a.charAt(0).toLowerCase()+a.q3a.slice(1)+'. '
+      +'When it comes to my character, '+a.q3b.charAt(0).toLowerCase()+a.q3b.slice(1)+'. '
+      +'What I value most in work is that '+a.q3c.charAt(0).toLowerCase()+a.q3c.slice(1)+'. '
+      +a.q3d.charAt(0).toUpperCase()+a.q3d.slice(1)+(a.q3d.endsWith('.')?'':'.') +' '
+      +'I believe these strengths and values make me a reasonable fit for this area, and I am motivated to keep developing.';
+  }
+
+  const qNum = which==='q2' ? '2' : '3';
+  const nextBtn = which==='q2'
+    ? '<button class="btn-cta" style="margin-top:1rem" onclick="show(\'s-q3\');renderScaffold(\'q3\')">Next - build my Q3 paragraph →</button>'
+    : '<button class="btn-cta" style="margin-top:1rem;background:var(--forest)" onclick="showDone()">Finish - see all my answers →</button>';
+
+  area.innerHTML=
+    '<div class="para-preview">'+
+      '<div class="para-preview-label">Your paragraph for Question '+qNum+'</div>'+
+      '<div class="para-text" id="para-'+which+'">'+para+'</div>'+
+      '<button class="copy-btn" onclick="copyPara(\''+which+'\')">Copy paragraph</button>'+
+      '<div class="copy-success" id="copy-ok-'+which+'">Copied! Paste it into your workbook.</div>'+
+    '</div>'+
+    '<div class="next-steps">'+
+      '<div class="next-h">What to do now</div>'+
+      '<p class="next-p">Copy this paragraph and paste it into <strong>Question '+qNum+'</strong> in your workbook. You can change any words to make it sound more like you before you submit.</p>'+
+    '</div>'+
+    nextBtn;
+}
+
+function copyPara(which){
+  const el=document.getElementById('para-'+which);
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(el.textContent).then(()=>{
+      const ok=document.getElementById('copy-ok-'+which);
+      ok.style.display='block';
+      setTimeout(()=>ok.style.display='none',3000);
+    });
+  }
+}
+
+function showDone(){
+  const doneArea=document.getElementById('done-summary');
+  const q2para=document.getElementById('para-q2')?document.getElementById('para-q2').textContent:'';
+  const q3para=document.getElementById('para-q3')?document.getElementById('para-q3').textContent:'';
+  doneArea.innerHTML=
+    '<p class="section-label">Your Q2 paragraph</p>'+
+    '<div class="para-preview"><div class="para-text">'+q2para+'</div>'+
+    '<button class="copy-btn" onclick="copyText(\'dq2\')">Copy Q2 paragraph</button>'+
+    '<div class="copy-success" id="copy-ok-dq2">Copied!</div></div>'+
+    '<p class="section-label" style="margin-top:1.5rem">Your Q3 paragraph</p>'+
+    '<div class="para-preview"><div class="para-text" id="dq2">'+q2para+'</div></div>'+
+    '<div class="para-preview"><div class="para-text" id="dq3">'+q3para+'</div>'+
+    '<button class="copy-btn" onclick="copyText(\'dq3\')">Copy Q3 paragraph</button>'+
+    '<div class="copy-success" id="copy-ok-dq3">Copied!</div></div>';
+  show('s-done');
+}
+
+function copyText(id){
+  const el=document.getElementById(id);
+  if(el&&navigator.clipboard){
+    navigator.clipboard.writeText(el.textContent).then(()=>{
+      const ok=document.getElementById('copy-ok-'+id);
+      if(ok){ok.style.display='block';setTimeout(()=>ok.style.display='none',3000);}
+    });
+  }
+}
+
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
